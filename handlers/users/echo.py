@@ -1,4 +1,6 @@
 from aiogram import types
+from aiogram.types import ContentType
+
 from loader import dp
 
 

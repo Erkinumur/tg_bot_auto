@@ -1,14 +1,13 @@
 from loader import bot, storage
+from config import admins
 
 
 async def on_startup(dp):
-    import filters
     import middlewares
-    filters.setup(dp)
     middlewares.setup(dp)
 
-    from utils.notify_admins import on_startup_notify
-    await on_startup_notify(dp)
+    for admin in admins:
+        await bot.send_message(admin, "Я запущен!")
 
 
 async def on_shutdown(dp):
@@ -21,3 +20,4 @@ if __name__ == '__main__':
     from handlers import dp
 
     executor.start_polling(dp, on_startup=on_startup, on_shutdown=on_shutdown)
+

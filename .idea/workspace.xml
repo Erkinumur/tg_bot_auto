@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="26f0fcd7-647f-4b97-8b1d-9c5b543c6ef7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filters/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/channels/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/groups/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/echo.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/echo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/help.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/help.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/default/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/inline/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/inline/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/inline/callback_datas.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/inline/callback_datas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/states/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/db_api/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/misc/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/misc/logging.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/misc/throttling.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/notify_admins.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/redis/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/redis/consts.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1eAz43ZabWydqTVTRdKku0yUGSz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/watch_shop" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="26f0fcd7-647f-4b97-8b1d-9c5b543c6ef7" name="Default Changelist" comment="" />
+      <created>1593778990228</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593778990228</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2597" y="257" width="732" height="635" key="#Inspections" timestamp="1594739023908">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2597" y="257" width="732" height="635" key="#Inspections/1920.0.1920.1080/0.40.1920.1040@1920.0.1920.1080" timestamp="1594739023908" />
+    <state x="3078" y="366" width="460" height="391" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593869273547">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="3078" y="366" width="460" height="391" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1080/0.40.1920.1040@1920.0.1920.1080" timestamp="1593869273547" />
+    <state x="2729" y="285" width="424" height="482" key="FileChooserDialogImpl" timestamp="1594731886027">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2729" y="285" width="424" height="482" key="FileChooserDialogImpl/1920.0.1920.1080/0.40.1920.1040@1920.0.1920.1080" timestamp="1594731886027" />
+  </component>
+</project>

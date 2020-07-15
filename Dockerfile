@@ -1,6 +1,6 @@
-FROM python:3.7-slim
+FROM python:latest
 
-WORKDIR /botname
+WORKDIR /
 
 COPY requirements.txt /botname/
 RUN pip install -r /botname/requirements.txt
