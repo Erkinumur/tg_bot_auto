@@ -2,7 +2,7 @@ import asyncio
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from models import DBCommands
-from .callback_datas import choice_brand_callback, choice_model_callback
+from .callback_datas import ChoiceBrandCallback, ChoiceModelCallback
 
 db = DBCommands()
 
@@ -15,7 +15,7 @@ async def choice_brand_markup():
         pk = brand.id
         markup.insert(InlineKeyboardButton(
             text=name,
-            callback_data=choice_brand_callback.new(
+            callback_data=ChoiceBrandCallback.new(
                 brand_name=name, pk=pk)
         ))
     return markup
@@ -29,7 +29,7 @@ async def choice_model_markup(brand_pk):
         pk = model.id
         markup.insert(InlineKeyboardButton(
             text=name,
-            callback_data=choice_model_callback.new(
+            callback_data=ChoiceModelCallback.new(
                 model_name=name, pk=pk)
         ))
     return markup
@@ -69,6 +69,12 @@ choice_gear_box_markup = InlineKeyboardMarkup(
 
 choice_wheel_position_markup = InlineKeyboardMarkup(
     inline_keyboard=
-        [[InlineKeyboardButton(text='Левый', callback_data='Левый'),
-         InlineKeyboardButton(text='Правый', callback_data='Правый')]]
+    [[InlineKeyboardButton(text='Левый', callback_data='Левый'),
+      InlineKeyboardButton(text='Правый', callback_data='Правый')]]
+)
+
+confirm_markup = InlineKeyboardMarkup(
+    inline_keyboard=
+    [[InlineKeyboardButton(text='Подтвердить', callback_data='confirm_car'),
+      InlineKeyboardButton(text='Удалить', callback_data='delete_car')]]
 )

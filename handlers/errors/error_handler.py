@@ -54,3 +54,4 @@ async def errors_handler(update, exception):
         logging.exception(f'CantParseEntities: {exception} \nUpdate: {update}')
         return True
     logging.exception(f'Update: {update} \n{exception}')
+    return True

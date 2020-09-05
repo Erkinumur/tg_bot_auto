@@ -2,6 +2,7 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 
 
 class NewCar(StatesGroup):
+    brand = State()
     model = State()
     year = State()
     kilometerage = State()
@@ -13,4 +14,12 @@ class NewCar(StatesGroup):
     wheel_position = State()
     description = State()
     price = State()
+    phone = State()
+    image = State()
+    confirm = State()
+
+
+class UpdateCar(StatesGroup):
+    update = State()
+    text = State()
     image = State()

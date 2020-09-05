@@ -3,10 +3,12 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton, ContentType
 
 import states
+from handlers.users.catalog import show_car
 from keyboards.default import menu
 from keyboards.inline.add_car import choice_brand_markup, choice_model_markup, \
-    choice_fuel_markup, choice_wheel_drive_markup, choice_gear_box_markup, choice_wheel_position_markup
-from keyboards.inline.callback_datas import choice_brand_callback, choice_model_callback
+    choice_fuel_markup, choice_wheel_drive_markup, choice_gear_box_markup, \
+    choice_wheel_position_markup, confirm_markup
+from keyboards.inline.callback_datas import ChoiceModelCallback, ChoiceBrandCallback
 from loader import dp
 from models import DBCommands
 
@@ -16,16 +18,18 @@ not_valid_text = 'Введенны не правильные данные.\n' \
                  'Попробуйте еще раз\n'
 cancel_text = '\nДля выхода введите "cancel"'
 
+
 @dp.message_handler(text='Создать объявление')
 async def choice_brand(message: Message):
     markup = await choice_brand_markup()
+    await states.NewCar.brand.set()
     await message.answer('Выберите марку авто:', reply_markup=markup)
 
 
-@dp.callback_query_handler(choice_brand_callback.filter())
+@dp.callback_query_handler(ChoiceBrandCallback.filter(), state=states.NewCar.brand)
 async def choice_model(call: CallbackQuery, callback_data: dict, state: FSMContext):
     brand_id = int(callback_data.get('pk'))
-    await states.NewCar.model.set()
+    await states.NewCar.next()
     await state.update_data(brand=await db.get_brand(brand_id))
 
     markup = await choice_model_markup(brand_id)
@@ -33,7 +37,7 @@ async def choice_model(call: CallbackQuery, callback_data: dict, state: FSMConte
     await call.message.answer('Выберите модель:', reply_markup=markup)
 
 
-@dp.callback_query_handler(choice_model_callback.filter(), state=states.NewCar.model)
+@dp.callback_query_handler(ChoiceModelCallback.filter(), state=states.NewCar.model)
 async def input_car_year(call: CallbackQuery, callback_data: dict, state: FSMContext):
     model_id = int(callback_data.get('pk'))
     await states.NewCar.next()
@@ -139,6 +143,20 @@ async def input_img(message: Message, state: FSMContext):
         data = await state.get_data()
         await message.answer(not_valid_text + data.get('prev_text'))
         return
+    text = 'Введите номер телефона\n' \
+           '(в формате 996ХХХХХХ, только цифры' + cancel_text
+    await state.update_data(price=int(message.text),
+                            prev_text=text)
+    await states.NewCar.next()
+    await message.answer(text)
+
+
+@dp.message_handler(state=states.NewCar.phone)
+async def input_img(message: Message, state: FSMContext):
+    if not message.text.isdigit():
+        data = await state.get_data()
+        await message.answer(not_valid_text + data.get('prev_text'))
+        return
     text = 'Отправте фото авто (по одному)\n' \
            'Если фото больше нет, нажмите кнопку ниже или напишите "готово"'
     markup = ReplyKeyboardMarkup(
@@ -146,7 +164,7 @@ async def input_img(message: Message, state: FSMContext):
                              resize_keyboard=True,
                              one_time_keyboard=True
                          )
-    await state.update_data(price=int(message.text),
+    await state.update_data(phone=message.text,
                             prev_text=text,
                             img_markup=markup,
                             images=[])
@@ -167,13 +185,35 @@ async def create_car(message: Message, state: FSMContext):
     user = types.User.get_current()
     await state.update_data(user_id=int(user.id))
     data = await state.get_data()
-    print(data)
-    await db.add_new_car(data)
+    car = await db.add_new_car(data)
+    await state.update_data(car=car)
+    await states.NewCar.next()
+    markup = confirm_markup
+    await show_car(message, car)
+    await message.answer('Подтвердите создание объявления',
+                         reply_markup=markup)
+
+
+@dp.callback_query_handler(text_contains='confirm', state=states.NewCar.confirm)
+async def confirm_create_car(call: CallbackQuery, state: FSMContext):
     await state.reset_state()
-    await message.answer('Готово!')
+    await call.message('Объявление создано')
+    await call.message.answer('Готово!', reply_markup=menu)
+    await call.message.delete()
+
+
+@dp.callback_query_handler(text_contains='delete', state=states.NewCar.confirm)
+async def delete_create_car(call: CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    await db.delete_obj(data['car'])
+    await state.reset_state()
+    await call.answer('Отмена')
+    await call.message.answer('Создание отменено', reply_markup=menu)
+    await call.message.delete()
 
 
 @dp.message_handler(text='cancel', state=states.NewCar)
 async def cancel(message: Message, state: FSMContext):
     await state.reset_state()
     await message.answer('Отмена', reply_markup=menu)
+    await message.delete()

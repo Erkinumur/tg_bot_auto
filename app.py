@@ -1,6 +1,8 @@
 from loader import bot, storage
 from config import admins
 
+from logger import log_decorator
+
 
 async def on_startup(dp):
     import middlewares
